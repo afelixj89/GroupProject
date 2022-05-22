@@ -1,22 +1,21 @@
 from flask_app import app
 from flask import render_template, redirect, request, session 
 
-# Import your models
+
 from flask_app.models import flight, carrier  
 
 
-#Define our routes! 
-#Route that shows all the flights on one page
+
 @app.route("/flights")
 def all_flights():
     return render_template("all_flights.html", all_flights = flight.Flight.grab_all_flights_with_carriers())
 
-# Route that shows the new flight form
+
 @app.route("/flights/new")
 def new_flights():
     return render_template("add_flight.html", all_carriers = carrier.Carrier.grab_all_carriers())
 
-# Route that adds flight to the database - POST 
+
 @app.route("/flights/add", methods=["POST"])
 def add_flight_to_database():
     data = {
@@ -28,7 +27,7 @@ def add_flight_to_database():
     flight.Flight.add_flight(data)
     return redirect("/flights")
 
-# Route that shows an individual flight
+
 @app.route("/flights/<int:id>")  
 def view_flight_page(id):
     data = {
@@ -38,13 +37,13 @@ def view_flight_page(id):
 
 
 
-# Route that DISPLAYS the edit form for a single flight 
+
 @app.route("/flights/<int:id>/edit")
 def edit_flight_page(id):
     data = {
         "id": id,
     }
-    # Grab the flight with its carrier and all carriers for the dropdown menu
+ 
     return render_template("edit_flight.html", one_flight = flight.Flight.grab_one_flight_with_carrier(data), all_carriers = carrier.Carrier.grab_all_carriers())
 
 
@@ -54,15 +53,14 @@ def edit_flight_to_database(id):
         "number": request.form["number"],
         "starting_city": request.form["starting_city"],
         "ending_city": request.form["ending_city"],
-        "carrier_id": request.form["carrier_id"], # The Carrier we want to link to this Flight
-        "id": id # Need id of the Flight as well, VERY IMPORTANT 
+        "carrier_id": request.form["carrier_id"], 
+        "id": id 
     }
 
     flight.Flight.edit_flight(data)
     return redirect(f"/flights/{id}/view") 
 
 
-# Route that deletes a flight
 @app.route("/flights/<int:id>/delete")
 def delete_flights(id):
     data = {
@@ -71,4 +69,4 @@ def delete_flights(id):
     flight.Flight.delete_flight(data)
     return redirect("/flights")
     
-# If you have a view, edit, delete route,the number is the id of that individual item
+

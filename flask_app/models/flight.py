@@ -15,14 +15,12 @@ class Flight:
         self.carrier = None  
 
 
-        # Adding a flight 
     @classmethod
     def add_flight(cls, data):
         query = "INSERT INTO flights (number, starting_city, ending_city, carrier_id) VALUES (%(number)s,%(starting_city)s,%(ending_city)s,%(carrier_id)s);"
         return connectToMySQL(cls.schema_name).query_db(query, data)
 
 
-    # Grab all flights WITH their carriers
     @classmethod 
     def grab_all_flights_with_carriers(cls):
         query = "SELECT * FROM flights JOIN carriers ON flights.carrier_id = carriers.id;" #query the data from the database 
@@ -65,13 +63,11 @@ class Flight:
             this_flight.carrier = this_carrier 
             return this_flight
 
-    # Edit a flight 
     @classmethod
     def edit_flight(cls, data): 
         query = "UPDATE flights SET number=%(number)s, starting_city=%(starting_city)s, ending_city=%(ending_city)s, carrier_id=%(carrier_id)s WHERE id=%(id)s;"
         return connectToMySQL(cls.schema_name).query_db(query, data) 
 
-    # Delete a flight 
     @classmethod
     def delete_flight(cls, data):
         query = "DELETE FROM flights WHERE id =%(id)s;"
