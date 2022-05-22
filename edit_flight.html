@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Edit Flight</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-9">
+                <h1>Edit Flight {{ one_flight.number }}</h1>  <!-- Added flight number-->
+            <div class="col text-end fs-3">
+                <a href="/flights">All Flights</a>   <!---link to Flights page-->
+            </div>
+        </div>
+        <form action="/flights/{{ one_flight.id }}/edit_in_db" method="POST"> <!--- Route to send the data to database (located in the controllers @app.route("/carriers/add"); dont forget method="POST"-->
+            <div class="form-group row">
+                <label class="col-sm-2 col -form-label lg pt-2.5">Flight numer:</label>
+                <div  class="col-sm-4 p-2">
+                    <input type="text" value="{{ one_flight.number }}" class="form-control" name="number">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col -form-label lg pt-2.5">Departure:</label>
+                <div  class="col-sm-4 p-2">
+                    <input type="text" value="{{ one_flight.starting_city }}" class="form-control" name="starting_city">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col -form-label lg pt-2.5">Arrival:</label>
+                <div  class="col-sm-4 p-2">
+                    <input type="text" value="{{ one_flight.ending_city }}" class="form-control" name="ending_city">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col -form-label lg pt-2.5">Carrier:</label>
+                <!---Added dropdown to show carriers - notice that we need the carriers from the database-->
+                <div  class="col-sm-4 p-2">
+                <select name="carrier_id">
+                    {% for this_carrier in all_carriers %}
+                        {% if this_carrier.id == one_flight.carrier.id %} <!-- if this carrier id is the same as the carrier of the flight, make it the select option -->
+                            <option value="{{ this_carrier.id }}" selected>{{ this_carrier.name }}</option>
+                        {% else %} <!-- otherwise, show it as it is without  it being selected. -->
+                            <option value="{{ this_carrier.id }}">{{ this_carrier.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                </div>
+            <div class="form-group row">
+                <div  class="col-sm-4 p-2">
+                    <button type="submit" class="btn btn-primary">Edit flight</button>
+                </div>
+            </div>    
+        </form>
+</body>
+</html>
