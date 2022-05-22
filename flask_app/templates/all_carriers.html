@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>View Carriers</title>
+    <title>All Carriers</title>
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}"> For Flask Use when set up. -->
+    <link rel="stylesheet" href="../static/css/style.css"> <!--For HTML setup without flask use-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-9">
-                <h1>All Carriers</h1>
-            </div>
-            <div class="col text-end fs-3">
-                <a href="/flights">All Flights</a> <!-- Add an href here-->
-            </div>
+    <div class="banner">
+        <h1 class="banner_title">All Flight listings</h1>
+        <div class="navButons">
+            <a href="">My Flights</a>
+            <a href="">All Carriers</a>
+            <a href="/">Logout</a>
         </div>
+    </div>
+    <div class="display">
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID:</th>
+                    <!-- <th>ID:</th> -->
                     <th>Name:</th>
                     <th>Headquarters City:</th>
                     <th>Year Founded:</th>
@@ -29,16 +31,19 @@
                 </tr>
             </thead>
             <tbody>
-                <!---Add data here from the database-->
-                {% for this_carrier in all_carriers %}
-                <tr>
-                    <td>{{ this_carrier.id }}</td> 
-                    <td>{{ this_carrier.name }}</td> 
-                    <td>{{ this_carrier.hq_city }}</td> 
-                    <td>{{ this_carrier.year_founded }}</td> 
-                    <td>{{ this_carrier.total_workers }}</td> 
-                    <td><a href="/carriers/{{ this_carrier.id }}/view">View</a>|<a href="/carriers/{{ this_carrier.id }}/edit">Edit</a>|<a href="/carriers/{{ this_carrier.id }}/delete">Delete</a></td> 
-                </tr>
+                {% for carrier in all_carriers %}
+                    <tr>
+                        <!-- <td>{{ carrier.id }}</td>  -->
+                        <td>{{ carrier.name }}</td> 
+                        <td>{{ carrier.hq_city }}</td> 
+                        <td>{{ carrier.year_founded }}</td> 
+                        <td>{{ carrier.total_workers }}</td> 
+                        <td class="target_actions">
+                            <a href="/carriers/{{ carrier.id }}/view">View</a>
+                            <a href="/carriers/{{ carrier.id }}/edit">Edit</a>
+                            <a href="/carriers/{{ carrier.id }}/delete">Delete</a>
+                        </td> 
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>

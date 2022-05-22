@@ -4,7 +4,7 @@
 }
 
 .bg_image {
-    background-image: url("../images/pexels-eberhard-grossgasteiger-1367179.jpg");
+    /* background-image: url("../images/pexels-eberhard-grossgasteiger-1367179.jpg"); */
     height: 100%;
     width: 100%;
     box-sizing: border-box;
@@ -83,4 +83,39 @@ legend {
     color: black;
     padding: 5px 15px;
     margin-top: 20px;;
+}
+
+.banner {
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.navButtons {
+    display: flex;
+}
+
+.banner a, .target_actions a {
+    color: black;
+    background-color: whitesmoke;
+    text-align: center;
+    margin: 0px 5px; 
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.banner a:hover, .target_actions a:hover {
+    background-color: black;
+    color: whitesmoke;
+}
+
+.target_actions {
+    display: flex;
+}
+
+.display {
+    padding: 20px;
 }
