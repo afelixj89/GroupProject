@@ -1,0 +1,86 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.bg_image {
+    background-image: url("../images/pexels-eberhard-grossgasteiger-1367179.jpg");
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    background-position:bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.container {
+    margin: 0px auto;
+    width: 1000px;
+    height: 100vh; /*To ensure the background body fills the whole page.*/
+}
+
+.content {
+    width: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 200px auto;
+}
+
+.registration_col {
+    /* background-color: aqua; */
+    padding: 20px;
+}
+
+.login_col {
+    /* background-color: aquamarine; */
+    padding: 20px;
+}
+
+.form_box {
+    background-color: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+legend {
+    padding: 5px;
+    font-size: 20pt;
+    border-radius: 10px;
+}
+
+.legend_bg{
+    background-color: white;
+}
+
+.entries {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    padding: 10px;
+    margin: auto;
+    width: 300px;
+}
+
+.row > label {
+    display: block;
+}
+
+.form_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login_button, #register_button, #add_button{
+    background-color: aliceblue;
+    color: black;
+    padding: 5px 15px;
+    margin-top: 20px;;
+}
