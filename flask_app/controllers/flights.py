@@ -2,7 +2,7 @@ from flask_app import app
 from flask import render_template, redirect, request, session 
 
 # Import your models
-from flask_app.models import flight, carrier  # Create Flights by doing flight.Flight()
+from flask_app.models import flight, carrier  
 
 
 #Define our routes! 
@@ -29,14 +29,13 @@ def add_flight_to_database():
     return redirect("/flights")
 
 # Route that shows an individual flight
-@app.route("/flights/<int:id>/view")  
+@app.route("/flights/<int:id>")  
 def view_flight_page(id):
-    # Grab one flight with its carrier 
     data = {
         "id": id,
     }
     return render_template("view_flight.html", one_flight = flight.Flight.grab_one_flight_with_carrier(data))
-    #grab_one_flight_with_carrier is coming from method 
+
 
 
 # Route that DISPLAYS the edit form for a single flight 
@@ -49,8 +48,6 @@ def edit_flight_page(id):
     return render_template("edit_flight.html", one_flight = flight.Flight.grab_one_flight_with_carrier(data), all_carriers = carrier.Carrier.grab_all_carriers())
 
 
-# Route that EDITS a specific flight in the database 
-# create flight = insert flight into database = POST request
 @app.route("/flights/<int:id>/edit_in_db", methods=["POST"])
 def edit_flight_to_database(id):
     data = {
@@ -60,10 +57,9 @@ def edit_flight_to_database(id):
         "carrier_id": request.form["carrier_id"], # The Carrier we want to link to this Flight
         "id": id # Need id of the Flight as well, VERY IMPORTANT 
     }
-    # call on edit flight method to add the database 
+
     flight.Flight.edit_flight(data)
-    # modelfilename.classname.classmethod_function_name(data)
-    return redirect(f"/flights/{id}/view") # Always redirect with POST routes! 
+    return redirect(f"/flights/{id}/view") 
 
 
 # Route that deletes a flight

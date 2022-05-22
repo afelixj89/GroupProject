@@ -14,7 +14,6 @@ class Carrier:
         self.name = data['name']
         self.hq_city = data['hq_city']
         self.year_founded = data['year_founded']
-        self.total_workers = data['total_workers']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.flights = [] # Place holding Many Flights linked to this carrier. We have a list here because one carrier can hold many flights
@@ -24,7 +23,7 @@ class Carrier:
     # Adding a carrier 
     @classmethod
     def add_carrier(cls, data): # data needed if you're passing in a data dictionary
-        query = "INSERT INTO carriers (name, hq_city, year_founded, total_workers) VALUES (%(name)s,%(hq_city)s,%(year_founded)s,%(total_workers)s);"
+        query = "INSERT INTO carriers (name, hq_city, year_founded) VALUES (%(name)s,%(hq_city)s,%(year_founded)s);"
         return connectToMySQL(cls.schema_name).query_db(query, data)
 
     # Show all the carriers
@@ -92,7 +91,7 @@ class Carrier:
     # Edit one carrier 
     @classmethod 
     def edit_carrier(cls, data):
-        query = "UPDATE carriers SET name=%(name)s, hq_city=%(hq_city)s, year_founded=%(year_founded)s, total_workers=%(total_workers)s WHERE id=%(id)s;"
+        query = "UPDATE carriers SET name=%(name)s, hq_city=%(hq_city)s, year_founded=%(year_founded)s WHERE id=%(id)s;"
         return connectToMySQL(cls.schema_name).query_db(query, data) 
         
 
