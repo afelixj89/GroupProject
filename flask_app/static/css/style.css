@@ -3,8 +3,11 @@
     padding: 0px;
 }
 
+body {
+    height: 100vh; /*To ensure the background body fills the whole page.*/
+}
+
 .bg_image {
-    /* background-image: url("../images/pexels-eberhard-grossgasteiger-1367179.jpg"); */
     height: 100%;
     width: 100%;
     box-sizing: border-box;
@@ -14,10 +17,13 @@
     overflow: hidden;
 }
 
+.image1 {
+    background-image: url("../images/pexels-eberhard-grossgasteiger-1367179.jpg");
+}
+
 .container {
     margin: 0px auto;
     width: 1000px;
-    height: 100vh; /*To ensure the background body fills the whole page.*/
 }
 
 .content {
