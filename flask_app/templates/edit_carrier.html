@@ -4,42 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Edit Carrier</title>
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}"> For Flask Use when set up. -->
+    <link rel="stylesheet" href="../static/css/style.css"> <!--For HTML setup without flask use-->
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-9">
-                <h1>Edit Carrier {{ one_carrier.name }}</h1> 
-            <div class="col text-end fs-3">
-                <a href="/carriers">All Carriers</a>   <!---link to all carriers (/carriers) it has to be the route name-->
-            </div>
+    <div class="banner">
+        <h1 class="banner_title">Dojo Airlines</h1>
+        <div class="navButons">
+            <a href="/flights">All Flights</a>
+            <a href="/carriers">All Carriers</a>
+            <a href="/">Logout</a>
         </div>
-        <form action="/carriers/{{ one_carrier.id }}/edit_in_db" method="POST"> <!-- Route to send the data to database (located in the controllers @app.route("/carriers/add"); dont forget method="POST"-->
-            <div class="form-group row">
-                <label class="col-sm-2 col -form-label lg pt-2.5">Name:</label>
-                <div  class="col-sm-4 p-2">
-                    <input type="text" value="{{ one_carrier.name }}" class="form-control" name="name">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col -form-label lg pt-2.5">Headquarters city:</label>
-                <div  class="col-sm-4 p-2">
-                    <input type="text" value="{{ one_carrier.hq_city }}" class="form-control" name="hq_city">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col -form-label lg pt-2.5">Year founded:</label>
-                <div  class="col-sm-4 p-2">
-                    <input type="number" value="{{ one_carrier.year_founded }}" class="form-control" name="year_founded">
-                </div>
-            </div>
-            <div class="form-group row">
-                <div  class="col-sm-4 p-2">
-                    <button type="submit" class="btn btn-primary">Edit carrier</button>
-                </div>
-            </div>          
-        </form>
+    </div>
+    <div class="bg_image image1">
+        <div class="content">
+            <form action="/flights/add" method="post"> 
+                <fieldset class="form_box">
+                    <legend class="legend_bg">Update Carrier</legend>
+                    <div class="entries">
+                        <div class="row">
+                            <label for="name">Name:</label>
+                            <input type="text" name="number" value="{{one_carrier.name}}">
+                        </div>
+                        <div class="row">
+                            <label for="hq_city">Headquarters:</label>
+                            <input type="text" name="hq_city" value="{{one_carrier.hq_city}}">
+                        </div>
+                        <div class="row">
+                            <label for="year_founded">Year Founded:</label>
+                            <input type="text" name="year_founded" value="{{one_carrier.year_founded}}">
+                        </div>
+                    </div>
+                    <div class="form_button">
+                        <button type="submit" id="add_button">Update</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
