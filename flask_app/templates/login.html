@@ -9,23 +9,14 @@
     <link rel="stylesheet" href="../static/css/style.css"> <!--For HTML setup without flask use-->
 </head>
 <body>
-    <div class="bg_image">
+    <div class="bg_image image1">
         <div class="container">
+            
             <div class="content">
                 <div class="registration_col">
-                    <form action="/register_user" method="post">
+                    <form action="/register" method="post">
                         <fieldset class="form_box">
                             <legend class="legend_bg">Register</legend>
-                            <!-- {% with messages = get_flashed_messages() %}
-                                {% if messages %}
-                                    <div class="error">
-                                        <p>Flash Error(s)!</p>
-                                        {% for message in messages %}
-                                            <p>{{message}}</p>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                            {% endwith %} -->
                             <div class="entries">
                                 <div class="row">
                                     <label for="first_name">First Name:</label>
@@ -55,19 +46,9 @@
                     </form>
                 </div>
                 <div class="login_col">
-                    <form action="/login_user" method="post">
+                    <form action="/login" method="post">
                         <fieldset class="form_box">
                             <legend class="legend_bg">Login</legend>
-                            <!-- {% with messages = get_flashed_messages() %}
-                                {% if messages %}
-                                    <div class="error">
-                                        <p>Flash Error(s)!</p>
-                                        {% for message in messages %}
-                                            <p>{{message}}</p>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                            {% endwith %} -->
                             <div class="row">
                                 <label for="email">Email:</label>
                                 <input type="text" name="email">
@@ -83,6 +64,16 @@
                     </form>
                 </div>
             </div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="error">
+                        <p>Flash Error(s)!</p>
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
         </div>
     </div>
 </body>

@@ -30,7 +30,7 @@ def register():
     }
     session["user_id"] = user.User.register_user(data) 
     session["first_name"] = user.User.register_user(data)
-    return redirect("/flights")
+    return redirect("/carriers")
 
 
 # /login (INVISIBLE POST route) - logs a user in 
@@ -43,7 +43,7 @@ def login():
     }
     logged_in_user = user.User.get_by_email(data)
     session["user_id"] = logged_in_user.id
-    return redirect("/flights")
+    return redirect("/carriers")
 
 # /logout (INVISIBLE route) - clears session, sends the user back to login/registration page. 
 @app.route("/logout")

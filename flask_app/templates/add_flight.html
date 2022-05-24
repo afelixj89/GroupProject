@@ -12,8 +12,8 @@
     <div class="banner">
         <h1 class="banner_title">Add Flight</h1>
         <div class="navButons">
-            <a href="">All Flights</a>
-            <a href="">All Carriers</a>
+            <a href="/flights">All Flights</a>
+            <a href="/carriers">All Carriers</a>
             <a href="/">Logout</a>
         </div>
     </div>
@@ -47,6 +47,7 @@
                     <div class="form_button">
                         <button type="submit" id="add_button">Create flight</button>
                     </div>
+                    <input type="hidden" name="user_id" value="{{session['user_id']}}">
                 </fieldset>
             </form>
         </div>

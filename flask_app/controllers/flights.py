@@ -23,6 +23,7 @@ def add_flight_to_database():
         "starting_city": request.form["starting_city"],
         "ending_city": request.form["ending_city"],
         "carrier_id": request.form["carrier_id"],
+        "user_id": request.form["user_id"]
     }
     flight.Flight.add_flight(data)
     return redirect("/flights")
@@ -58,7 +59,7 @@ def edit_flight_to_database(id):
     }
 
     flight.Flight.edit_flight(data)
-    return redirect(f"/flights/{id}/view") 
+    return redirect("/flights") 
 
 
 @app.route("/flights/<int:id>/delete")
@@ -68,5 +69,5 @@ def delete_flights(id):
     }
     flight.Flight.delete_flight(data)
     return redirect("/flights")
-    
 
+#Backlog: Flights Validation

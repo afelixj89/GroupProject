@@ -55,7 +55,7 @@ def edit_carrier_to_database(id):
         "id": id 
     }
     carrier.Carrier.edit_carrier(data)
-    return redirect(f"/carriers/{id}/view")
+    return redirect("/carriers")
 
 
 
@@ -67,6 +67,4 @@ def delete_carriers(id):
     carrier.Carrier.delete_carrier(data)
     return redirect("/carriers")
 
-
-
-
+#Backlog: Carrier Validation

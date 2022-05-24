@@ -13,18 +13,18 @@
     <div class="banner">
         <h1 class="banner_title">All Flight listings</h1>
         <div class="navButons">
-            <a href="">All Flights</a>
-            <a href="">All Carriers</a>
+            <a href="/flights">All Flights</a>
+            <a href="/carriers">All Carriers</a>
             <a href="/">Logout</a>
         </div>
     </div>
     <div class="bg_image image1">
         <div class="flight_content">
-            <h1> About Flight #{{ one_flight.id }}</h1>
-            <p class ="target_info">Flight number: {{ one_flight.number }}</p>
-            <p class ="target_info">Depature: {{ one_flight.starting_city }} </p>
-            <p class ="target_info">Arrival: {{ one_flight.ending_city }} </p>
-            <p class ="target_info">Airline:  {{one_flight.carrier.name }}</p>
+            <!-- <h1> About Flight #{{ one_flight.id }}</h1> -->
+            <p class ="target_info"><span>Flight number:</span> {{ one_flight.number }}</p>
+            <p class ="target_info"><span>Depature:</span> {{ one_flight.starting_city }} </p>
+            <p class ="target_info"><span>Arrival:</span> {{ one_flight.ending_city }} </p>
+            <p class ="target_info"><span>Airline:</span>  {{one_flight.carrier.name }}</p>
         </div>
     </div>
 </body>

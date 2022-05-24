@@ -17,7 +17,7 @@ class Flight:
 
     @classmethod
     def add_flight(cls, data):
-        query = "INSERT INTO flights (number, starting_city, ending_city, carrier_id) VALUES (%(number)s,%(starting_city)s,%(ending_city)s,%(carrier_id)s);"
+        query = "INSERT INTO flights (number, starting_city, ending_city, carrier_id, user_id) VALUES (%(number)s,%(starting_city)s,%(ending_city)s,%(carrier_id)s,%(user_id)s);"
         return connectToMySQL(cls.schema_name).query_db(query, data)
 
 

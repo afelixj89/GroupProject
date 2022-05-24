@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Flight</title>
-    <!-- <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}"> For Flask Use when set up. -->
-    <link rel="stylesheet" href="../static/css/style.css"> <!--For HTML setup without flask use-->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"> <!--For Flask Use when set up.-->
+    <!-- <link rel="stylesheet" href="../static/css/style.css"> For HTML setup without flask use -->
 </head>
 <body>
     <div class="banner">
@@ -19,7 +19,7 @@
     </div>
     <div class="bg_image image1">
         <div class="content">
-            <form action="/flights/add" method="post"> 
+            <form action="/flights/{{one_flight.id}}/edit_in_db" method="post"> 
                 <fieldset class="form_box">
                     <legend class="legend_bg">Update Flight</legend>
                     <div class="entries">
