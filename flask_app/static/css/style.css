@@ -125,3 +125,26 @@ legend {
 .display {
     padding: 20px;
 }
+
+.flight_content {
+    text-align: center;
+    width: 650px;
+    margin: 300px auto;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(204, 204, 204, 0.7);
+}
+
+.carrier_content {
+    text-align: center;
+    width: 700px;
+    margin: 300px auto;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(204, 204, 204, 0.7);
+}
+
+.target_info {
+    font-weight: bold;
+    font-size: 20pt;
+}
